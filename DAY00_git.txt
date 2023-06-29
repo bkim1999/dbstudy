@@ -1,0 +1,21 @@
+ dbstudy 폴더 만들어서 로컬 레파지토리로 등록하기
+    git init
+
+  - git 사용자 등록하기
+    git config user.email 개인이메일
+    git config user.name 개인아이디
+
+  - dbstudy 폴더에 a.txt 파일 만들고 hello 입력 후 commit 하기
+    git add a.txt   또는   git add .
+
+  - github에 가입 및 personal access token 발급 받기
+    personal access token은 복사해서 스스로 잘 보관해야 함(github 사이트에서 확인이 불가능함)
+  
+  - github에 원격레파지토리 dbstudy 만들기
+    만들 때 아무 것도 포함시키지 않아야 작업이 수월!
+
+  - dbstudy 로컬 레파지토리와 연결할 원격 레파지토리 등록
+    git remote add origin https://github.com/goodeeit/dbstudy.git
+
+  - 로컬레파지토리 -> 원격으로 올리기
+    git push origin main
