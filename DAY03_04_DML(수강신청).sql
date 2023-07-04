@@ -205,8 +205,6 @@ INSERT INTO ENROLL_TBL (
     103,
     '2023-07-03'
 );
-    
-
-
-
 COMMIT;
+
+--

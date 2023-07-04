@@ -35,7 +35,7 @@ CREATE TABLE EMPLOYEE_T (
     SALARY    NUMBER,
     CONSTRAINT PK_EMPLOYEE PRIMARY KEY ( EMP_NO ),
     CONSTRAINT FK_DEPART_EMP FOREIGN KEY ( DEPART )
-        REFERENCES DEPARTMENT_T ( DEPT_NO )
+        REFERENCES DEPARTMENT_T ( DEPT_NO ) ON DELETE SET NULL
 );
 
 CREATE SEQUENCE DEPT_SEQ -- 디폴트
@@ -160,4 +160,40 @@ INSERT INTO EMPLOYEE_T (
 
 COMMIT;
 
-ROLLBACK;
+/*
+    수정
+    UPDATE [테이블명]
+       SET [업데이트내용], ...
+     WHERE 조건식
+*/
+
+-- 1. 부서번호가 3인 부서의 지역 -> '인천'
+UPDATE DEPARTMENT_T
+   SET LOCATION = '인천'
+ WHERE DEPT_NO = 3;
+ 
+ 
+
+-- 2. 부서번호가 2인 부서의 모든 사원의 연봉을 500000 인상
+UPDATE EMPLOYEE_T
+   SET SALARY = SALARY + 500000
+ WHERE DEPART = 2;
+ 
+/*
+    삭제
+    DELETE
+      FROM [테이블명]
+     WHERE 조건식
+*/
+
+-- 3. 지역이 인천인 부서 삭제 (사원 없음)
+DELETE
+  FROM DEPARTMENT_T
+ WHERE LOCATION = '인천';
+ 
+-- 4. 지역이 서울인 부서 삭제 (사원 있음 -> ON DELETE SET NULL)
+DELETE
+  FROM DEPARTMENT_T
+ WHERE LOCATION = '서울';
+
+-- 5. 
