@@ -1,0 +1,56 @@
+/*
+    문자 처리
+    1. 대소문자 변환 : UPPER(), LOWER(), INITCAP()
+    2. 글자 수 : LENGTH()
+    3. BYTE 수 : LENGTHB()
+    4. 연결하기 : || (오라클 전용), CONCAT(A, B) (표준, 오라클 2개제한)
+    5. 일부 : SUBSTR(문자, 시작위치, 길이)
+    6. 위치검색 : INSTR(문자, 찾을 문자) (못 찾으면 0, 여러 개면 첫번째)
+    7. 바꾸기 : REPLACE(문자, 찾을 문자, 바꿀 문자)
+    8. 채우기 : LPAD(문자, 전체폭, 채울 문자), RPAD(")
+    9. 공백 제거 : LTRIM(문자), RTRIM(문자)
+*/
+
+SELECT UPPER(EMAIL),
+       LOWER(EMAIL),
+       INITCAP(EMAIL)
+  FROM EMPLOYEES;
+
+SELECT FIRST_NAME,
+       LENGTH(FIRST_NAME)
+  FROM EMPLOYEES;
+  
+SELECT FIRST_NAME,
+       LENGTHB(FIRST_NAME)
+  FROM EMPLOYEES;
+
+SELECT FIRST_NAME || LAST_NAME,
+       CONCAT(FIRST_NAME, LAST_NAME),
+       CONCAT(CONCAT(FIRST_NAME, LAST_NAME), EMAIL)
+  FROM EMPLOYEES;
+
+SELECT SUBSTR(PHONE_NUMBER, 1, 3) FROM EMPLOYEES;
+
+SELECT EMAIL, INSTR(EMAIL, 'A') FROM EMPLOYEES;
+
+SELECT EMAIL, REPLACE(EMAIL, 'A', '$') FROM EMPLOYEES;
+
+SELECT LPAD(DEPARTMENT_ID, 3, '0'),
+       RPAD(SUBSTR(EMAIL, 1, 2), 5, '*')
+  FROM EMPLOYEES;
+
+SELECT LTRIM('    HELLO     WORLD     '),
+       RTRIM('    HELLO     WORLD     '),
+        TRIM('    HELLO     WORLD     ')
+  FROM DUAL;
+
+-- 실습
+-- 1. 사원 테이블: JOB_ID에서 밑줄 뒷부분만 조회
+SELECT SUBSTR(JOB_ID, 1, INSTR(JOB_ID, '_') - 1) AS 앞,
+       SUBSTR(JOB_ID, INSTR(JOB_ID, '_') + 1) AS 뒤
+  FROM EMPLOYEES;
+  
+-- 2. FIRST_NAME + LAST_NAME 대문자로 바꾼 FULL_NAME
+SELECT UPPER(CONCAT(CONCAT(FIRST_NAME, ' '), LAST_NAME)) AS FULL_NAME
+  FROM EMPLOYEES
+ ORDER BY EMPLOYEE_ID;
