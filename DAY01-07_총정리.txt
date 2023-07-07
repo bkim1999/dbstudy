@@ -1,0 +1,98 @@
+git
+
+git = 버전관리도구
+
+git 명령어
+git init				로컬 repository 생성
+git remote add [remote] [git 링크] 	원격 repo 등록
+git add []				stage 하기
+COMMIT : git commit -m 'message'   commit 하기
+PUSH : git push [remote] [local]	remote repo로 push하기
+
+
+DATABASE
+
+계정 생성
+CREATE USER [계정명] IDENTIFIED BY [비밀번호];
+
+권한 부여
+GRANT [권한1, 권한2, ...] TO [계정명];
+ACCESS 접속
+RESOURCE 데이터 수정
+DBA 	  데이터 생성, 삭제
+
+계정 삭제
+DROP USER [계정명] CASCADE; (CASCADE 옵션은 데이터까지 삭제)
+
+DBA = DATABASE ADMINISTRATOR 데이터베이스 관리자 권한
+
+테이블 사이의 관계 1:1 관계, 1:M관계
+
+
+DDL
+
+DATA DEFINITION LANGUAGE
+
+데이터 정의어
+
+데이터베이스 객체를 생성, 수정, 삭제 CREATE ALTER DROP TRUNCATE
+
+트랜잭션 대상 아님 (작업 취소 안됨)
+
+
+
+DML
+
+DATA MANIPULATION LANGUAGE
+
+데이터 조작어
+
+데이터(ROW)을 삽입, 수정, 삭제 INSERT, UPDATE, DELETE
+
+트랜잭션 대상 (작업취소 가능 COMMIT ROLLBACK)
+
+
+DQL
+
+DATA QUERY LANGUAGE
+
+데이터 질의어
+
+데이터를 조회 SELECT
+
+
+실행 순서
+
+SELECT		5
+FROM		1
+WHERE		2
+GROUP BY	3
+HAVING		4
+ORDER BY	6
+
+
+JOIN
+두 개 이상의 테이블을 한 번에 조회
+
+INNER JOIN
+두 테이블에 공통의 값을 가진 데이터만 조회
+
+OUTER JOIN
+두 테이블에 공통의 값이 없어도 조회
+
+LEFT OUTER JOIN 왼쪽 테이블은 전부, 오른쪽 테이블은 공통의 값을 가진 데이터만
+RIGHT OUTER JOIN 반대
+
+
+
+서브쿼리
+
+SELECT (스칼라 : 한 행/열만 반환)
+FROM (인라인 뷰: 테이블 형태)
+WHERE (단일 : 하나의 결과 /다중 행 서브쿼리 : 여러 결과)
+
+
+WITH
+자주 사용/복잡한 쿼리문을 등록
+임시저장
+가독성
